@@ -4,3 +4,12 @@ description: Learn how to self-host Latitude
 ---
 
 TODO.
+
+# Notes
+
+- To start automatically all containers with `docker compose up -d`, comment out the `profiles: [building]` lines in `docker-compose.yml`
+
+- You may possibly need to comment out the lines specifying `platforms: - 'linux/amd64'` in `docker-compose.yml`
+
+- To run migrations from inside the docker containers after they are started with `docker compose up -d`, use the following command:
+  `docker exec -it -e CI=1 -w /app/apps/gateway/node_modules/@latitude-data/core latitude-llm-gateway-1 /usr/local/lib/node_modules/corepack/shims/pnpm db:migrate`

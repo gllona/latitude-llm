@@ -23,8 +23,8 @@ services:
 
   web:
     build:
-      platforms:
-        - 'linux/amd64'
+#      platforms:
+#        - 'linux/amd64'
       context: .
       dockerfile: apps/web/docker/Dockerfile
       args:
@@ -36,7 +36,7 @@ services:
         - NEXT_PUBLIC_POSTHOG_HOST=$NEXT_PUBLIC_POSTHOG_HOST
         - SUPPORT_APP_ID=$SUPPORT_APP_ID
         - SUPPORT_APP_SECRET_KEY=$SUPPORT_APP_SECRET_KEY
-    profiles: [building]
+#    profiles: [building]
     ports:
       - '8080:8080'
     environment:
@@ -74,11 +74,11 @@ services:
 
   gateway:
     build:
-      platforms:
-        - 'linux/amd64'
+#      platforms:
+#        - 'linux/amd64'
       context: .
       dockerfile: apps/gateway/docker/Dockerfile
-    profiles: [building]
+#    profiles: [building]
     environment:
       - HOSTNAME=0.0.0.0
       - PORT=8081
@@ -115,11 +115,11 @@ services:
 
   workers:
     build:
-      platforms:
-        - 'linux/amd64'
+#      platforms:
+#        - 'linux/amd64'
       context: .
       dockerfile: apps/workers/docker/Dockerfile
-    profiles: [building]
+#    profiles: [building]
     environment:
       - CACHE_HOST=redis
       - DATABASE_URL=postgresql://latitude:secret@db:5432/latitude_development
